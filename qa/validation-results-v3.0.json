@@ -1,0 +1,131 @@
+{
+  "version": "3.0.0",
+  "unit_tests_passed": 56,
+  "declared_calculations_passed": 34,
+  "json_schema": "passed",
+  "render": {
+    "desktop": {
+      "width": 1280,
+      "documentWidth": 1280,
+      "pages": 7,
+      "svg": 3,
+      "bodyText": 4200,
+      "chartScroll": [
+        {
+          "outer": 890,
+          "inner": 890
+        },
+        {
+          "outer": 890,
+          "inner": 890
+        },
+        {
+          "outer": 890,
+          "inner": 890
+        }
+      ],
+      "page_errors": [],
+      "network_requests": []
+    },
+    "mobile": {
+      "width": 390,
+      "documentWidth": 390,
+      "pages": 7,
+      "svg": 3,
+      "bodyText": 4200,
+      "chartScroll": [
+        {
+          "outer": 350,
+          "inner": 580
+        },
+        {
+          "outer": 350,
+          "inner": 580
+        },
+        {
+          "outer": 350,
+          "inner": 580
+        }
+      ],
+      "page_errors": [],
+      "network_requests": []
+    },
+    "pdf": {
+      "pages": 7,
+      "pages_text_chars": [
+        652,
+        452,
+        578,
+        500,
+        430,
+        671,
+        829
+      ],
+      "page_sizes": [
+        [
+          595.0,
+          841.9
+        ],
+        [
+          595.0,
+          841.9
+        ],
+        [
+          595.0,
+          841.9
+        ],
+        [
+          595.0,
+          841.9
+        ],
+        [
+          595.0,
+          841.9
+        ],
+        [
+          595.0,
+          841.9
+        ],
+        [
+          595.0,
+          841.9
+        ]
+      ]
+    }
+  },
+  "browser": {
+    "manual_1280": {
+      "width": 1280,
+      "scrollWidth": 1280,
+      "text": 14692,
+      "svgTextOutside": [],
+      "errors": [],
+      "network": []
+    },
+    "manual_390": {
+      "width": 390,
+      "scrollWidth": 390,
+      "text": 14692,
+      "svgTextOutside": [],
+      "errors": [],
+      "network": []
+    },
+    "demo_1280": {
+      "width": 1280,
+      "scrollWidth": 1280,
+      "text": 4200,
+      "svgTextOutside": [],
+      "errors": [],
+      "network": []
+    },
+    "demo_390": {
+      "width": 390,
+      "scrollWidth": 390,
+      "text": 4200,
+      "svgTextOutside": [],
+      "errors": [],
+      "network": []
+    },
+    "python_3_10_syntax": "passed; runtime executed on Python 3.13, not tested on a 3.10 interpreter"
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "version": "3.2.0",
+  "selection_rule": "成品以简报或完整版选择，独立于报告类型；完整经营诊断默认comprehensive。standard为旧数据契约兼容档，读者时间短不等于删除后层证据。",
+  "profiles": [
+    {
+      "id": "brief",
+      "name": "简报",
+      "editorial_page_range": [
+        5,
+        12
+      ],
+      "deliverable_mode": "简报",
+      "finding_limit_scope": "最高层归纳，不覆盖完整材料保留要求",
+      "management_pack": "核心判断＋最小充分证据"
+    },
+    {
+      "id": "standard",
+      "name": "标准分析",
+      "deliverable_mode": "旧版兼容档；新任务在简报与完整版之间按范围选成品",
+      "editorial_page_range": [
+        6,
+        20
+      ],
+      "finding_limit_scope": "按问题决定，不机械截断",
+      "management_pack": "摘要＋专题发现与行动"
+    },
+    {
+      "id": "comprehensive",
+      "name": "全面诊断",
+      "editorial_page_range": [
+        20,
+        60
+      ],
+      "deliverable_mode": "完整版",
+      "page_range_is_limit": false,
+      "management_pack": "多页关键数据、全部重要发现、待决事项、优先待办及范围状态",
+      "required": "封面、目录、管理摘要、正文、附录／方法与来源、封底；范围台账、章节论证、全量行动索引、跨章一致性与最终分页检查"
+    }
+  ]
+}

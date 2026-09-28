@@ -1,0 +1,33 @@
+{
+  "version": "3.2.0",
+  "source": "v3.1.0 archive integrity verified before migration; 85 original tests passed",
+  "json_schema": "Draft 2020-12: both examples valid",
+  "synthetic": {
+    "full_pages": 45,
+    "brief_pages": 7,
+    "metrics": 534,
+    "declared_calculations": 296,
+    "sections": 31,
+    "actions": 12,
+    "sources": 13,
+    "coverage_modules": 13
+  },
+  "tests": {
+    "passed": 88,
+    "log": "test-results.txt"
+  },
+  "render": {
+    "full_plan_pages": 45,
+    "full_pdf_pages": 45,
+    "brief_pdf_pages": 7,
+    "full_footer_mismatches": [],
+    "desktop_and_mobile_html": "1280px and 390px: no document overflow, duplicate IDs, broken anchors, script errors or external requests"
+  },
+  "visual_review": "All 45 pages inspected in contact sheets; cover, TOC, summary, both visual pages and back cover inspected at full size; no visible clipped or orphaned content",
+  "privacy": "Configured text and PDF pattern scan passed; sample and interface are synthetic; human review still required for future real content",
+  "limitations": [
+    "Automated validation does not certify source truth, causality or business feasibility",
+    "Renderer uses an explicit page plan; future content changes require renewed print review",
+    "Real screenshots require separate rights, provenance and redaction review"
+  ]
+}

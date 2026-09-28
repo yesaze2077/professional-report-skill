@@ -1,0 +1,192 @@
+[
+  {
+    "id": "cover",
+    "name": "封面",
+    "question": "这是什么报告、针对谁、覆盖何时",
+    "required": ["标题", "目的", "对象", "分析期间", "数据截止日", "版本与适用范围"],
+    "assertion_title": false
+  },
+  {
+    "id": "contents",
+    "name": "目录与阅读导航",
+    "question": "如何快速找到结论、行动与证据",
+    "required": ["一级章节", "重要二级章节", "页码或锚点", "管理摘要与行动入口"],
+    "assertion_title": false
+  },
+  {
+    "id": "summary",
+    "name": "管理摘要",
+    "question": "答案和决策含义",
+    "required": [
+      "标题",
+      "摘要",
+      "关键发现",
+      "关键边界"
+    ],
+    "assertion_title": true
+  },
+  {
+    "id": "decision",
+    "name": "决策请求",
+    "question": "需要批准或取舍什么",
+    "required": [
+      "决定事项",
+      "依据",
+      "风险",
+      "状态"
+    ],
+    "assertion_title": true
+  },
+  {
+    "id": "snapshot",
+    "name": "指标概览",
+    "question": "少量关键指标当前状态",
+    "required": [
+      "指标",
+      "本期",
+      "比较基准",
+      "单位",
+      "来源"
+    ],
+    "assertion_title": true
+  },
+  {
+    "id": "trend",
+    "name": "趋势解释",
+    "question": "何时变化、变化多少",
+    "required": [
+      "期间",
+      "趋势图",
+      "拐点",
+      "解释",
+      "来源"
+    ],
+    "assertion_title": true
+  },
+  {
+    "id": "contribution",
+    "name": "差异分解",
+    "question": "总变化由哪些分项构成",
+    "required": [
+      "期初",
+      "变化分项",
+      "期末",
+      "计算规则",
+      "限制"
+    ],
+    "assertion_title": true
+  },
+  {
+    "id": "comparison",
+    "name": "分组比较",
+    "question": "哪些人群或对象不同",
+    "required": [
+      "比较对象",
+      "统一尺度",
+      "样本",
+      "差异",
+      "解释"
+    ],
+    "assertion_title": true
+  },
+  {
+    "id": "theme",
+    "name": "研究主题",
+    "question": "观察到了什么模式",
+    "required": [
+      "主题",
+      "样本证据",
+      "反例",
+      "转述标识",
+      "解释边界"
+    ],
+    "assertion_title": true
+  },
+  {
+    "id": "funnel",
+    "name": "流程损失",
+    "question": "损失集中在哪一步",
+    "required": [
+      "同一对象",
+      "阶段口径",
+      "分步率",
+      "累计率",
+      "验证"
+    ],
+    "assertion_title": true
+  },
+  {
+    "id": "scenario",
+    "name": "情景估算",
+    "question": "条件变化可能意味着什么",
+    "required": [
+      "基线",
+      "公式",
+      "参数",
+      "结果区间",
+      "非预测标识"
+    ],
+    "assertion_title": true
+  },
+  {
+    "id": "action",
+    "name": "行动安排",
+    "question": "如何执行与验证",
+    "required": [
+      "动作",
+      "依据",
+      "责任状态",
+      "时间状态",
+      "指标",
+      "门槛"
+    ],
+    "assertion_title": true
+  },
+  {
+    "id": "method",
+    "name": "口径与方法",
+    "question": "结果怎样复核",
+    "required": [
+      "来源",
+      "定义",
+      "筛选",
+      "计算",
+      "限制"
+    ],
+    "assertion_title": false
+  },
+  {
+    "id": "appendix",
+    "name": "附录查数",
+    "question": "需要哪些完整记录",
+    "required": [
+      "标题",
+      "完整数据",
+      "单位",
+      "来源",
+      "说明"
+    ],
+    "assertion_title": false
+  },
+  {
+    "id": "visual_evidence",
+    "name": "界面截图与证据",
+    "question": "哪个可观察界面状态支持结论",
+    "required": ["截图对象", "采集日期或合成标识", "必要遮盖", "局部标注", "来源与解释"],
+    "assertion_title": true
+  },
+  {
+    "id": "process",
+    "name": "流程与依赖",
+    "question": "步骤、角色和条件如何衔接",
+    "required": ["起止", "步骤", "条件分支", "角色", "来源或示意标识"],
+    "assertion_title": true
+  },
+  {
+    "id": "back_cover",
+    "name": "封底",
+    "question": "报告版本和适用范围是什么",
+    "required": ["报告名称", "版本", "使用范围"],
+    "assertion_title": false
+  }
+]

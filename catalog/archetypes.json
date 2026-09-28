@@ -1,0 +1,105 @@
+[
+  {
+    "id": "executive_brief",
+    "name": "管理简报",
+    "when": "需要短时间作出判断",
+    "sequence": [
+      "核心答案",
+      "关键依据",
+      "需决定事项",
+      "下一步与边界"
+    ],
+    "template": "templates/executive-brief.md"
+  },
+  {
+    "id": "performance",
+    "name": "经营复盘",
+    "when": "回答表现、差距和下一步",
+    "sequence": [
+      "管理摘要",
+      "结果与目标差距",
+      "主要驱动",
+      "优先行动",
+      "口径与限制"
+    ],
+    "template": "templates/business-diagnostic.md"
+  },
+  {
+    "id": "diagnostic",
+    "name": "专项诊断",
+    "when": "定位现象与可验证解释",
+    "sequence": [
+      "当前判断",
+      "问题集中位置",
+      "证据与替代解释",
+      "验证计划",
+      "方法"
+    ],
+    "template": "templates/business-diagnostic.md"
+  },
+  {
+    "id": "market",
+    "name": "市场研究",
+    "when": "判断需求、竞争与机会边界",
+    "sequence": [
+      "研究结论",
+      "市场边界",
+      "需求与竞争",
+      "机会情景",
+      "进入条件与风险"
+    ],
+    "template": "templates/market-research.md"
+  },
+  {
+    "id": "customer",
+    "name": "用户研究与VOC",
+    "when": "理解需求、行为和痛点",
+    "sequence": [
+      "研究结论",
+      "样本与范围",
+      "主要主题与反例",
+      "行为解释",
+      "产品或运营机会"
+    ],
+    "template": "templates/customer-research.md"
+  },
+  {
+    "id": "experiment",
+    "name": "实验复盘",
+    "when": "判断效果、有效性与推进条件",
+    "sequence": [
+      "实验结论",
+      "主指标与护栏",
+      "效应及区间",
+      "有效性检查",
+      "扩大或停止条件"
+    ],
+    "template": "templates/experiment-readout.md"
+  },
+  {
+    "id": "project_risk",
+    "name": "项目与风险",
+    "when": "核实进度、问题、影响和控制",
+    "sequence": [
+      "总体状态",
+      "重大偏差",
+      "风险证据",
+      "修复与依赖",
+      "后续检查"
+    ],
+    "template": "templates/project-risk.md"
+  },
+  {
+    "id": "options",
+    "name": "方案比较",
+    "when": "比较商业方案与约束",
+    "sequence": [
+      "问题与约束",
+      "可行方案",
+      "一致标准下的取舍",
+      "建议及适用条件",
+      "实施验证"
+    ],
+    "template": "templates/executive-brief.md"
+  }
+]

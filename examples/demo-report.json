@@ -1,0 +1,1241 @@
+{
+  "meta": {
+    "title": "收入增长20%，转化率降至2.88%",
+    "edition": "中文专业报告简报示例 · v3.2",
+    "period": "2026年第二季度（对比第一季度）",
+    "data_as_of": "2026年7月7日",
+    "main_question": "增长来自哪里，下一阶段应优先验证什么？",
+    "scope": "虚构零售业务｜统一口径净销售额、会话与反馈样本",
+    "language": "zh-CN",
+    "synthetic": true,
+    "status": "final",
+    "depth": "brief",
+    "format_mode": "brief"
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "title": "合成渠道净销售额",
+      "period": "2026年第一、第二季度",
+      "locator": "demo-report.json → metrics / sales_*、paid_*等",
+      "note": "各渠道为互斥示例分类；净销售额不含税费、运费，已扣折扣及退款。目标150万美元也是合成示例。渠道归属用于算术分解，不等于因果增量。"
+    },
+    {
+      "id": "S2",
+      "title": "合成设备会话与订单",
+      "period": "2026年第一、第二季度",
+      "locator": "demo-report.json → metrics / mobile_*、desktop_*、total_*",
+      "note": "订单数／会话数为本例转化率定义；合计先加总分子与分母再相除。假设订单归属与会话统计使用相同期间，未提供价格、库存、页面速度或实验数据。"
+    },
+    {
+      "id": "S3",
+      "title": "合成用户反馈主题",
+      "period": "2026年第二季度；200条有效反馈",
+      "locator": "demo-report.json → metrics / feedback_n、fitment等",
+      "note": "每条反馈可包含多个主题。这里展示4类主题的条目数，不是互斥构成；样本来自假想反馈渠道，不能代表全部购买者。没有使用真实用户引语或身份信息。"
+    },
+    {
+      "id": "S4",
+      "title": "固定参数的合成情景假设",
+      "period": "按一个季度估算",
+      "locator": "demo-report.json → metrics / low_*、base_*、high_*；checks",
+      "note": "以S2第二季度25万次会话为流量基线，假设客单价200美元保持不变。新增净销售额＝会话数×转化率提升幅度×客单价。三个情景互斥，不可相加；不含实施成本、促销侵蚀及额外退款，不是利润或预测。"
+    }
+  ],
+  "metrics": {
+    "paid_q1": {
+      "value": 600000,
+      "unit": "美元",
+      "status": "synthetic",
+      "source_id": "S1"
+    },
+    "paid_q2": {
+      "value": 780000,
+      "unit": "美元",
+      "status": "synthetic",
+      "source_id": "S1"
+    },
+    "paid_delta": {
+      "value": 180000,
+      "unit": "美元",
+      "status": "calculated",
+      "source_id": "S1"
+    },
+    "organic_q1": {
+      "value": 300000,
+      "unit": "美元",
+      "status": "synthetic",
+      "source_id": "S1"
+    },
+    "organic_q2": {
+      "value": 330000,
+      "unit": "美元",
+      "status": "synthetic",
+      "source_id": "S1"
+    },
+    "organic_delta": {
+      "value": 30000,
+      "unit": "美元",
+      "status": "calculated",
+      "source_id": "S1"
+    },
+    "email_q1": {
+      "value": 180000,
+      "unit": "美元",
+      "status": "synthetic",
+      "source_id": "S1"
+    },
+    "email_q2": {
+      "value": 190000,
+      "unit": "美元",
+      "status": "synthetic",
+      "source_id": "S1"
+    },
+    "email_delta": {
+      "value": 10000,
+      "unit": "美元",
+      "status": "calculated",
+      "source_id": "S1"
+    },
+    "direct_q1": {
+      "value": 120000,
+      "unit": "美元",
+      "status": "synthetic",
+      "source_id": "S1"
+    },
+    "direct_q2": {
+      "value": 140000,
+      "unit": "美元",
+      "status": "synthetic",
+      "source_id": "S1"
+    },
+    "direct_delta": {
+      "value": 20000,
+      "unit": "美元",
+      "status": "calculated",
+      "source_id": "S1"
+    },
+    "sales_q1": {
+      "value": 1200000,
+      "unit": "美元",
+      "status": "calculated",
+      "source_id": "S1"
+    },
+    "sales_q2": {
+      "value": 1440000,
+      "unit": "美元",
+      "status": "calculated",
+      "source_id": "S1"
+    },
+    "sales_delta": {
+      "value": 240000,
+      "unit": "美元",
+      "status": "calculated",
+      "source_id": "S1"
+    },
+    "sales_growth": {
+      "value": 0.2,
+      "unit": "相对变化率",
+      "status": "calculated",
+      "source_id": "S1"
+    },
+    "paid_contribution": {
+      "value": 0.75,
+      "unit": "净增量份额",
+      "status": "calculated",
+      "source_id": "S1"
+    },
+    "target": {
+      "value": 1500000,
+      "unit": "美元",
+      "status": "synthetic",
+      "source_id": "S1"
+    },
+    "achievement": {
+      "value": 0.96,
+      "unit": "比例",
+      "status": "calculated",
+      "source_id": "S1"
+    },
+    "target_gap": {
+      "value": -60000,
+      "unit": "美元",
+      "status": "calculated",
+      "source_id": "S1"
+    },
+    "mobile_q1_sessions": {
+      "value": 120000,
+      "unit": "次",
+      "status": "synthetic",
+      "source_id": "S2"
+    },
+    "mobile_q1_orders": {
+      "value": 3600,
+      "unit": "单",
+      "status": "synthetic",
+      "source_id": "S2"
+    },
+    "mobile_q1_cvr": {
+      "value": 0.03,
+      "unit": "比例",
+      "status": "calculated",
+      "source_id": "S2"
+    },
+    "desktop_q1_sessions": {
+      "value": 80000,
+      "unit": "次",
+      "status": "synthetic",
+      "source_id": "S2"
+    },
+    "desktop_q1_orders": {
+      "value": 3200,
+      "unit": "单",
+      "status": "synthetic",
+      "source_id": "S2"
+    },
+    "desktop_q1_cvr": {
+      "value": 0.04,
+      "unit": "比例",
+      "status": "calculated",
+      "source_id": "S2"
+    },
+    "mobile_q2_sessions": {
+      "value": 175000,
+      "unit": "次",
+      "status": "synthetic",
+      "source_id": "S2"
+    },
+    "mobile_q2_orders": {
+      "value": 4200,
+      "unit": "单",
+      "status": "synthetic",
+      "source_id": "S2"
+    },
+    "mobile_q2_cvr": {
+      "value": 0.024,
+      "unit": "比例",
+      "status": "calculated",
+      "source_id": "S2"
+    },
+    "desktop_q2_sessions": {
+      "value": 75000,
+      "unit": "次",
+      "status": "synthetic",
+      "source_id": "S2"
+    },
+    "desktop_q2_orders": {
+      "value": 3000,
+      "unit": "单",
+      "status": "synthetic",
+      "source_id": "S2"
+    },
+    "desktop_q2_cvr": {
+      "value": 0.04,
+      "unit": "比例",
+      "status": "calculated",
+      "source_id": "S2"
+    },
+    "total_q1_sessions": {
+      "value": 200000,
+      "unit": "次",
+      "status": "calculated",
+      "source_id": "S2"
+    },
+    "total_q1_orders": {
+      "value": 6800,
+      "unit": "单",
+      "status": "calculated",
+      "source_id": "S2"
+    },
+    "total_q1_cvr": {
+      "value": 0.034,
+      "unit": "比例",
+      "status": "calculated",
+      "source_id": "S2"
+    },
+    "total_q2_sessions": {
+      "value": 250000,
+      "unit": "次",
+      "status": "calculated",
+      "source_id": "S2"
+    },
+    "total_q2_orders": {
+      "value": 7200,
+      "unit": "单",
+      "status": "calculated",
+      "source_id": "S2"
+    },
+    "total_q2_cvr": {
+      "value": 0.0288,
+      "unit": "比例",
+      "status": "calculated",
+      "source_id": "S2"
+    },
+    "total_cvr_change": {
+      "value": -0.52,
+      "unit": "个百分点",
+      "status": "calculated",
+      "source_id": "S2"
+    },
+    "mobile_cvr_change": {
+      "value": -0.6,
+      "unit": "个百分点",
+      "status": "calculated",
+      "source_id": "S2"
+    },
+    "desktop_cvr_change": {
+      "value": 0,
+      "unit": "个百分点",
+      "status": "calculated",
+      "source_id": "S2"
+    },
+    "feedback_n": {
+      "value": 200,
+      "unit": "条",
+      "status": "synthetic",
+      "source_id": "S3"
+    },
+    "fitment": {
+      "value": 65,
+      "unit": "条",
+      "status": "synthetic",
+      "source_id": "S3"
+    },
+    "fitment_share": {
+      "value": 0.325,
+      "unit": "比例",
+      "status": "calculated",
+      "source_id": "S3"
+    },
+    "shipping": {
+      "value": 42,
+      "unit": "条",
+      "status": "synthetic",
+      "source_id": "S3"
+    },
+    "shipping_share": {
+      "value": 0.21,
+      "unit": "比例",
+      "status": "calculated",
+      "source_id": "S3"
+    },
+    "instructions": {
+      "value": 31,
+      "unit": "条",
+      "status": "synthetic",
+      "source_id": "S3"
+    },
+    "instructions_share": {
+      "value": 0.155,
+      "unit": "比例",
+      "status": "calculated",
+      "source_id": "S3"
+    },
+    "packaging": {
+      "value": 18,
+      "unit": "条",
+      "status": "synthetic",
+      "source_id": "S3"
+    },
+    "packaging_share": {
+      "value": 0.09,
+      "unit": "比例",
+      "status": "calculated",
+      "source_id": "S3"
+    },
+    "scenario_aov": {
+      "value": 200,
+      "unit": "美元／单",
+      "status": "synthetic",
+      "source_id": "S4"
+    },
+    "low_cvr_lift": {
+      "value": 0.001,
+      "unit": "比例",
+      "status": "estimated",
+      "source_id": "S4"
+    },
+    "low_orders": {
+      "value": 250.0,
+      "unit": "单",
+      "status": "estimated",
+      "source_id": "S4"
+    },
+    "low_sales": {
+      "value": 50000.0,
+      "unit": "美元",
+      "status": "estimated",
+      "source_id": "S4"
+    },
+    "base_cvr_lift": {
+      "value": 0.002,
+      "unit": "比例",
+      "status": "estimated",
+      "source_id": "S4"
+    },
+    "base_orders": {
+      "value": 500.0,
+      "unit": "单",
+      "status": "estimated",
+      "source_id": "S4"
+    },
+    "base_sales": {
+      "value": 100000.0,
+      "unit": "美元",
+      "status": "estimated",
+      "source_id": "S4"
+    },
+    "high_cvr_lift": {
+      "value": 0.003,
+      "unit": "比例",
+      "status": "estimated",
+      "source_id": "S4"
+    },
+    "high_orders": {
+      "value": 750.0,
+      "unit": "单",
+      "status": "estimated",
+      "source_id": "S4"
+    },
+    "high_sales": {
+      "value": 150000.0,
+      "unit": "美元",
+      "status": "estimated",
+      "source_id": "S4"
+    }
+  },
+  "summary": {
+    "bottom_line": "第二季度净销售额为144万美元，环比增长20%；付费渠道贡献了账面增量的75%。同期全站转化率下降0.52个百分点，现有资料不足以判断增长是否带来更高利润，也不能据此确定转化下滑的原因。",
+    "findings": [
+      {
+        "text": "净销售额增加24万美元，其中付费渠道增加18万美元；这一分解说明增量的账面归属，不证明广告的增量效果。",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "text": "移动端转化率由3.00%降至2.40%，桌面端维持4.00%；应先核对分群与路径，再决定改动页面还是调整流量。",
+        "source_ids": [
+          "S2"
+        ]
+      },
+      {
+        "text": "200条反馈中，65条涉及适配信息不清楚；这提示可验证的问题，不代表32.5%的全部客户都存在同样困难。",
+        "source_ids": [
+          "S3"
+        ]
+      }
+    ],
+    "next_step": "先核对移动端人群、商品与路径差异；再针对证据支持的具体问题设计小范围验证。暂不把情景收入作为预算回报承诺。",
+    "critical_limit": "缺少营销成本、毛利及对照实验，当前只支持结果描述与验证优先级，不支持利润改善或因果判断。"
+  },
+  "kpis": [
+    {
+      "label": "净销售额",
+      "metric_id": "sales_q2",
+      "scale": 10000,
+      "decimals": 0,
+      "suffix": "万美元",
+      "comparison": "环比增加24万美元（+20%）"
+    },
+    {
+      "label": "目标完成率",
+      "metric_id": "achievement",
+      "scale": 0.01,
+      "decimals": 1,
+      "suffix": "%",
+      "comparison": "示例目标150万美元；差额6万美元"
+    },
+    {
+      "label": "全站转化率",
+      "metric_id": "total_q2_cvr",
+      "scale": 0.01,
+      "decimals": 2,
+      "suffix": "%",
+      "comparison": "第一季度3.40%；下降0.52个百分点"
+    }
+  ],
+  "sections": [
+    {
+      "id": "channel",
+      "eyebrow": "01｜增长来源",
+      "headline": "新增24万美元中，18万美元归属于付费渠道",
+      "paragraphs": [
+        "净销售额从120万美元增至144万美元。付费渠道、自然搜索、邮件和直接访问分别增加18万、3万、1万和2万美元，分项与总增量一致。",
+        "75%表示付费渠道在本例净增量中的账面占比，而不是广告带来的因果贡献，也不能据此认定自然搜索没有增长机会。"
+      ],
+      "claim_type": "calculation",
+      "source_ids": [
+        "S1"
+      ],
+      "limitation": "本例采用互斥的统一渠道分类。真实报告应先排除平台归因重叠，再讨论贡献；投放回报还需要成本和增量识别。",
+      "implication": "先核实付费渠道的利润与增量效果，再决定是否增加预算；仅凭收入归属不宜扩大投放。",
+      "chart": {
+        "type": "waterfall",
+        "title": "图1　净销售额变化分解",
+        "unit": "万美元",
+        "period": "2026年第一季度至第二季度",
+        "alt": "起点120，加18、3、1和2，终点144；付费渠道为最大账面增量项。",
+        "source_ids": [
+          "S1"
+        ],
+        "scale": 10000,
+        "decimals": 0,
+        "rows": [
+          {
+            "label": "第一季度",
+            "metric_id": "sales_q1",
+            "role": "start"
+          },
+          {
+            "label": "付费渠道",
+            "metric_id": "paid_delta",
+            "role": "delta"
+          },
+          {
+            "label": "自然搜索",
+            "metric_id": "organic_delta",
+            "role": "delta"
+          },
+          {
+            "label": "邮件",
+            "metric_id": "email_delta",
+            "role": "delta"
+          },
+          {
+            "label": "直接访问",
+            "metric_id": "direct_delta",
+            "role": "delta"
+          },
+          {
+            "label": "第二季度",
+            "metric_id": "sales_q2",
+            "role": "total"
+          }
+        ]
+      }
+    },
+    {
+      "id": "device",
+      "eyebrow": "02｜转化表现",
+      "headline": "移动端转化率下降0.60个百分点，桌面端未变",
+      "paragraphs": [
+        "移动端会话从12万次增至17.5万次，订单从3,600单增至4,200单；订单增长慢于会话增长，转化率从3.00%降至2.40%。",
+        "全站转化率按总订单／总会话计算，从3.40%降至2.88%。设备占比也发生变化，因此不能直接平均两个设备的转化率，或把全站降幅全部归因于某个页面。"
+      ],
+      "claim_type": "calculation",
+      "source_ids": [
+        "S2"
+      ],
+      "limitation": "没有流量质量、商品结构、库存和页面性能数据。该对比定位了变化位置，但没有识别根因。",
+      "implication": "后续核对优先覆盖移动端的人群与商品构成，再检查浏览、加购和结算阶段的损失。",
+      "chart": {
+        "type": "dumbbell",
+        "title": "图2　分设备转化率对比",
+        "unit": "%",
+        "period": "2026年第一季度与第二季度",
+        "alt": "移动端3.00%下降到2.40%，桌面端两期均4.00%；全站3.40%下降到2.88%。",
+        "source_ids": [
+          "S2"
+        ],
+        "scale": 0.01,
+        "decimals": 2,
+        "series_labels": [
+          "第一季度",
+          "第二季度"
+        ],
+        "y_min": 0,
+        "y_max": 4.8,
+        "rows": [
+          {
+            "label": "移动端",
+            "before": "mobile_q1_cvr",
+            "after": "mobile_q2_cvr"
+          },
+          {
+            "label": "桌面端",
+            "before": "desktop_q1_cvr",
+            "after": "desktop_q2_cvr"
+          },
+          {
+            "label": "全站",
+            "before": "total_q1_cvr",
+            "after": "total_q2_cvr"
+          }
+        ]
+      },
+      "table": {
+        "headers": [
+          "设备",
+          "一季度会话（次）",
+          "一季度订单（单）",
+          "二季度会话（次）",
+          "二季度订单（单）"
+        ],
+        "rows": [
+          [
+            "移动端",
+            {
+              "metric_id": "mobile_q1_sessions",
+              "scale": 1,
+              "decimals": 0,
+              "suffix": ""
+            },
+            {
+              "metric_id": "mobile_q1_orders",
+              "scale": 1,
+              "decimals": 0,
+              "suffix": ""
+            },
+            {
+              "metric_id": "mobile_q2_sessions",
+              "scale": 1,
+              "decimals": 0,
+              "suffix": ""
+            },
+            {
+              "metric_id": "mobile_q2_orders",
+              "scale": 1,
+              "decimals": 0,
+              "suffix": ""
+            }
+          ],
+          [
+            "桌面端",
+            {
+              "metric_id": "desktop_q1_sessions",
+              "scale": 1,
+              "decimals": 0,
+              "suffix": ""
+            },
+            {
+              "metric_id": "desktop_q1_orders",
+              "scale": 1,
+              "decimals": 0,
+              "suffix": ""
+            },
+            {
+              "metric_id": "desktop_q2_sessions",
+              "scale": 1,
+              "decimals": 0,
+              "suffix": ""
+            },
+            {
+              "metric_id": "desktop_q2_orders",
+              "scale": 1,
+              "decimals": 0,
+              "suffix": ""
+            }
+          ],
+          [
+            "合计",
+            {
+              "metric_id": "total_q1_sessions",
+              "scale": 1,
+              "decimals": 0,
+              "suffix": ""
+            },
+            {
+              "metric_id": "total_q1_orders",
+              "scale": 1,
+              "decimals": 0,
+              "suffix": ""
+            },
+            {
+              "metric_id": "total_q2_sessions",
+              "scale": 1,
+              "decimals": 0,
+              "suffix": ""
+            },
+            {
+              "metric_id": "total_q2_orders",
+              "scale": 1,
+              "decimals": 0,
+              "suffix": ""
+            }
+          ]
+        ]
+      }
+    },
+    {
+      "id": "feedback",
+      "eyebrow": "03｜用户反馈",
+      "headline": "适配信息是样本中最常被提及的问题",
+      "paragraphs": [
+        "200条有效反馈中，65条涉及适配信息不清楚，约占样本的32.5%；配送时效、安装说明和包装分别被42条、31条和18条反馈提及。",
+        "频次用于发现线索，不能单独代表问题严重性或改善收益。更重要的验证是：适配困惑出现在哪些商品、用户和购买阶段，是否真实阻碍成交。"
+      ],
+      "claim_type": "interpretation",
+      "source_ids": [
+        "S3"
+      ],
+      "limitation": "同一条反馈允许多个主题；上述类别不是互斥构成。样本比例不可外推为总体客户比例，未展示的其他主题也不能视为不存在。",
+      "implication": "先核查高频适配问题的商品与路径，再决定是补充说明、改进选型入口，还是维持现状。",
+      "chart": {
+        "type": "hbar",
+        "title": "图3　反馈主题的样本频次",
+        "unit": "条",
+        "period": "2026年第二季度；有效反馈n=200",
+        "alt": "适配信息65条、配送时效42条、安装说明31条、包装18条；多主题计数。",
+        "source_ids": [
+          "S3"
+        ],
+        "scale": 1,
+        "decimals": 0,
+        "rows": [
+          {
+            "label": "适配信息不清楚",
+            "metric_id": "fitment"
+          },
+          {
+            "label": "配送时效",
+            "metric_id": "shipping"
+          },
+          {
+            "label": "安装说明",
+            "metric_id": "instructions"
+          },
+          {
+            "label": "包装",
+            "metric_id": "packaging"
+          }
+        ]
+      },
+      "table": {
+        "headers": [
+          "主题",
+          "反馈条目数",
+          "占有效样本"
+        ],
+        "rows": [
+          [
+            "适配信息不清楚",
+            {
+              "metric_id": "fitment",
+              "scale": 1,
+              "decimals": 0,
+              "suffix": ""
+            },
+            {
+              "metric_id": "fitment_share",
+              "scale": 0.01,
+              "decimals": 1,
+              "suffix": "%"
+            }
+          ],
+          [
+            "配送时效",
+            {
+              "metric_id": "shipping",
+              "scale": 1,
+              "decimals": 0,
+              "suffix": ""
+            },
+            {
+              "metric_id": "shipping_share",
+              "scale": 0.01,
+              "decimals": 1,
+              "suffix": "%"
+            }
+          ],
+          [
+            "安装说明",
+            {
+              "metric_id": "instructions",
+              "scale": 1,
+              "decimals": 0,
+              "suffix": ""
+            },
+            {
+              "metric_id": "instructions_share",
+              "scale": 0.01,
+              "decimals": 1,
+              "suffix": "%"
+            }
+          ],
+          [
+            "包装",
+            {
+              "metric_id": "packaging",
+              "scale": 1,
+              "decimals": 0,
+              "suffix": ""
+            },
+            {
+              "metric_id": "packaging_share",
+              "scale": 0.01,
+              "decimals": 1,
+              "suffix": "%"
+            }
+          ]
+        ]
+      }
+    },
+    {
+      "id": "scenario",
+      "eyebrow": "04｜机会测算",
+      "headline": "每提升0.1个百分点，季度收入情景增加5万美元",
+      "paragraphs": [
+        "在季度会话数固定为25万次、客单价固定为200美元的假设下，全站转化率每提升0.1个百分点，对应增加250单、5万美元净销售额。",
+        "下表比较三种条件，不为其分配发生概率。它用于判断验证是否值得开展，不表示优化一定有效，更不是收益承诺。"
+      ],
+      "claim_type": "calculation",
+      "source_ids": [
+        "S2",
+        "S4"
+      ],
+      "limitation": "此处是全站提升情景，不能直接用于只覆盖移动端的改动。实施成本、毛利、促销与退款变化均未计入；三个情景不可相加。",
+      "implication": "先通过有对照的验证估计真实效果，再结合覆盖流量、成本与利润决定是否扩大。",
+      "table": {
+        "headers": [
+          "假设情景",
+          "转化率提升",
+          "新增订单（单）",
+          "新增净销售额"
+        ],
+        "rows": [
+          [
+            "低幅提升",
+            "0.1个百分点",
+            {
+              "metric_id": "low_orders",
+              "scale": 1,
+              "decimals": 0,
+              "suffix": ""
+            },
+            {
+              "metric_id": "low_sales",
+              "scale": 10000,
+              "decimals": 0,
+              "suffix": "万美元"
+            }
+          ],
+          [
+            "中幅提升",
+            "0.2个百分点",
+            {
+              "metric_id": "base_orders",
+              "scale": 1,
+              "decimals": 0,
+              "suffix": ""
+            },
+            {
+              "metric_id": "base_sales",
+              "scale": 10000,
+              "decimals": 0,
+              "suffix": "万美元"
+            }
+          ],
+          [
+            "高幅提升",
+            "0.3个百分点",
+            {
+              "metric_id": "high_orders",
+              "scale": 1,
+              "decimals": 0,
+              "suffix": ""
+            },
+            {
+              "metric_id": "high_sales",
+              "scale": 10000,
+              "decimals": 0,
+              "suffix": "万美元"
+            }
+          ]
+        ]
+      }
+    }
+  ],
+  "actions": [
+    {
+      "id": "A1",
+      "title": "核对移动端的分群、商品与转化路径",
+      "rationale": "对应转化率下滑，先区分结构变化与具体路径问题；不能直接把改页面作为默认答案。",
+      "owner": "责任主体待明确",
+      "timing": "建议作为首个验证步骤；完成日期待确认",
+      "success": "完成同口径分群与阶段转化核对，给出支持或推翻现有解释的证据",
+      "gate": "关键口径无法对齐时，先修复数据，不进入收益判断",
+      "dependencies": "会话、订单、商品、渠道与路径数据",
+      "related_sections": [
+        "device"
+      ],
+      "status": "proposed"
+    },
+    {
+      "id": "A2",
+      "title": "对已确认的问题开展小范围验证",
+      "rationale": "适配反馈提供了研究线索；只对证据支持的问题提出改动，并保留未改动对照。",
+      "owner": "执行与决策责任主体待明确",
+      "timing": "在问题核实后启动；观察窗口按样本需求确定",
+      "success": "预先定义主指标、退款等护栏及最小有意义改善幅度",
+      "gate": "效果不确定、护栏恶化或成本超过收益时，不扩大；门槛需试验前约定",
+      "dependencies": "稳定测量、足够样本及可隔离的实施范围",
+      "related_sections": [
+        "feedback",
+        "device"
+      ],
+      "status": "proposed"
+    },
+    {
+      "id": "A3",
+      "title": "使用实测效果重算收益与投入上限",
+      "rationale": "情景测算只提供量级参考，预算决策需要增量效果、覆盖流量、毛利和成本。",
+      "owner": "业务及财务责任主体待明确",
+      "timing": "在效果验证与成本核实后",
+      "success": "保留公式、情景、净收益与主要敏感参数",
+      "gate": "无法确认利润改善时，不将销售额情景作为投资回报承诺",
+      "dependencies": "实验结果、毛利、实施成本、退款变化",
+      "related_sections": [
+        "channel",
+        "scenario"
+      ],
+      "status": "proposed"
+    }
+  ],
+  "checks": [
+    {
+      "id": "check_paid_delta",
+      "op": "difference",
+      "inputs": [
+        "paid_q2",
+        "paid_q1"
+      ],
+      "result_metric": "paid_delta",
+      "tolerance": 1e-08
+    },
+    {
+      "id": "check_organic_delta",
+      "op": "difference",
+      "inputs": [
+        "organic_q2",
+        "organic_q1"
+      ],
+      "result_metric": "organic_delta",
+      "tolerance": 1e-08
+    },
+    {
+      "id": "check_email_delta",
+      "op": "difference",
+      "inputs": [
+        "email_q2",
+        "email_q1"
+      ],
+      "result_metric": "email_delta",
+      "tolerance": 1e-08
+    },
+    {
+      "id": "check_direct_delta",
+      "op": "difference",
+      "inputs": [
+        "direct_q2",
+        "direct_q1"
+      ],
+      "result_metric": "direct_delta",
+      "tolerance": 1e-08
+    },
+    {
+      "id": "check_sales_q1",
+      "op": "sum",
+      "inputs": [
+        "paid_q1",
+        "organic_q1",
+        "email_q1",
+        "direct_q1"
+      ],
+      "result_metric": "sales_q1",
+      "tolerance": 1e-08
+    },
+    {
+      "id": "check_sales_q2",
+      "op": "sum",
+      "inputs": [
+        "paid_q2",
+        "organic_q2",
+        "email_q2",
+        "direct_q2"
+      ],
+      "result_metric": "sales_q2",
+      "tolerance": 1e-08
+    },
+    {
+      "id": "check_sales_delta",
+      "op": "difference",
+      "inputs": [
+        "sales_q2",
+        "sales_q1"
+      ],
+      "result_metric": "sales_delta",
+      "tolerance": 1e-08
+    },
+    {
+      "id": "check_sales_growth",
+      "op": "relative_change",
+      "inputs": [
+        "sales_q2",
+        "sales_q1"
+      ],
+      "result_metric": "sales_growth",
+      "tolerance": 1e-08
+    },
+    {
+      "id": "check_paid_contribution",
+      "op": "ratio",
+      "inputs": [
+        "paid_delta",
+        "sales_delta"
+      ],
+      "result_metric": "paid_contribution",
+      "tolerance": 1e-08
+    },
+    {
+      "id": "check_achievement",
+      "op": "ratio",
+      "inputs": [
+        "sales_q2",
+        "target"
+      ],
+      "result_metric": "achievement",
+      "tolerance": 1e-08
+    },
+    {
+      "id": "check_target_gap",
+      "op": "difference",
+      "inputs": [
+        "sales_q2",
+        "target"
+      ],
+      "result_metric": "target_gap",
+      "tolerance": 1e-08
+    },
+    {
+      "id": "check_mobile_q1_cvr",
+      "op": "ratio",
+      "inputs": [
+        "mobile_q1_orders",
+        "mobile_q1_sessions"
+      ],
+      "result_metric": "mobile_q1_cvr",
+      "tolerance": 1e-08
+    },
+    {
+      "id": "check_desktop_q1_cvr",
+      "op": "ratio",
+      "inputs": [
+        "desktop_q1_orders",
+        "desktop_q1_sessions"
+      ],
+      "result_metric": "desktop_q1_cvr",
+      "tolerance": 1e-08
+    },
+    {
+      "id": "check_mobile_q2_cvr",
+      "op": "ratio",
+      "inputs": [
+        "mobile_q2_orders",
+        "mobile_q2_sessions"
+      ],
+      "result_metric": "mobile_q2_cvr",
+      "tolerance": 1e-08
+    },
+    {
+      "id": "check_desktop_q2_cvr",
+      "op": "ratio",
+      "inputs": [
+        "desktop_q2_orders",
+        "desktop_q2_sessions"
+      ],
+      "result_metric": "desktop_q2_cvr",
+      "tolerance": 1e-08
+    },
+    {
+      "id": "check_total_q1_sessions",
+      "op": "sum",
+      "inputs": [
+        "mobile_q1_sessions",
+        "desktop_q1_sessions"
+      ],
+      "result_metric": "total_q1_sessions",
+      "tolerance": 1e-08
+    },
+    {
+      "id": "check_total_q1_orders",
+      "op": "sum",
+      "inputs": [
+        "mobile_q1_orders",
+        "desktop_q1_orders"
+      ],
+      "result_metric": "total_q1_orders",
+      "tolerance": 1e-08
+    },
+    {
+      "id": "check_total_q1_cvr",
+      "op": "ratio",
+      "inputs": [
+        "total_q1_orders",
+        "total_q1_sessions"
+      ],
+      "result_metric": "total_q1_cvr",
+      "tolerance": 1e-08
+    },
+    {
+      "id": "check_total_q2_sessions",
+      "op": "sum",
+      "inputs": [
+        "mobile_q2_sessions",
+        "desktop_q2_sessions"
+      ],
+      "result_metric": "total_q2_sessions",
+      "tolerance": 1e-08
+    },
+    {
+      "id": "check_total_q2_orders",
+      "op": "sum",
+      "inputs": [
+        "mobile_q2_orders",
+        "desktop_q2_orders"
+      ],
+      "result_metric": "total_q2_orders",
+      "tolerance": 1e-08
+    },
+    {
+      "id": "check_total_q2_cvr",
+      "op": "ratio",
+      "inputs": [
+        "total_q2_orders",
+        "total_q2_sessions"
+      ],
+      "result_metric": "total_q2_cvr",
+      "tolerance": 1e-08
+    },
+    {
+      "id": "check_total_cvr_change",
+      "op": "pp_change",
+      "inputs": [
+        "total_q2_cvr",
+        "total_q1_cvr"
+      ],
+      "result_metric": "total_cvr_change",
+      "tolerance": 1e-08
+    },
+    {
+      "id": "check_mobile_cvr_change",
+      "op": "pp_change",
+      "inputs": [
+        "mobile_q2_cvr",
+        "mobile_q1_cvr"
+      ],
+      "result_metric": "mobile_cvr_change",
+      "tolerance": 1e-08
+    },
+    {
+      "id": "check_desktop_cvr_change",
+      "op": "pp_change",
+      "inputs": [
+        "desktop_q2_cvr",
+        "desktop_q1_cvr"
+      ],
+      "result_metric": "desktop_cvr_change",
+      "tolerance": 1e-08
+    },
+    {
+      "id": "check_fitment_share",
+      "op": "ratio",
+      "inputs": [
+        "fitment",
+        "feedback_n"
+      ],
+      "result_metric": "fitment_share",
+      "tolerance": 1e-08
+    },
+    {
+      "id": "check_shipping_share",
+      "op": "ratio",
+      "inputs": [
+        "shipping",
+        "feedback_n"
+      ],
+      "result_metric": "shipping_share",
+      "tolerance": 1e-08
+    },
+    {
+      "id": "check_instructions_share",
+      "op": "ratio",
+      "inputs": [
+        "instructions",
+        "feedback_n"
+      ],
+      "result_metric": "instructions_share",
+      "tolerance": 1e-08
+    },
+    {
+      "id": "check_packaging_share",
+      "op": "ratio",
+      "inputs": [
+        "packaging",
+        "feedback_n"
+      ],
+      "result_metric": "packaging_share",
+      "tolerance": 1e-08
+    },
+    {
+      "id": "check_low_orders",
+      "op": "multiply",
+      "inputs": [
+        "total_q2_sessions",
+        "low_cvr_lift"
+      ],
+      "result_metric": "low_orders",
+      "tolerance": 1e-08
+    },
+    {
+      "id": "check_low_sales",
+      "op": "multiply",
+      "inputs": [
+        "low_orders",
+        "scenario_aov"
+      ],
+      "result_metric": "low_sales",
+      "tolerance": 1e-08
+    },
+    {
+      "id": "check_base_orders",
+      "op": "multiply",
+      "inputs": [
+        "total_q2_sessions",
+        "base_cvr_lift"
+      ],
+      "result_metric": "base_orders",
+      "tolerance": 1e-08
+    },
+    {
+      "id": "check_base_sales",
+      "op": "multiply",
+      "inputs": [
+        "base_orders",
+        "scenario_aov"
+      ],
+      "result_metric": "base_sales",
+      "tolerance": 1e-08
+    },
+    {
+      "id": "check_high_orders",
+      "op": "multiply",
+      "inputs": [
+        "total_q2_sessions",
+        "high_cvr_lift"
+      ],
+      "result_metric": "high_orders",
+      "tolerance": 1e-08
+    },
+    {
+      "id": "check_high_sales",
+      "op": "multiply",
+      "inputs": [
+        "high_orders",
+        "scenario_aov"
+      ],
+      "result_metric": "high_sales",
+      "tolerance": 1e-08
+    }
+  ]
+}
