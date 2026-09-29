@@ -3,14 +3,26 @@
     "id": "cover",
     "name": "封面",
     "question": "这是什么报告、针对谁、覆盖何时",
-    "required": ["标题", "目的", "对象", "分析期间", "数据截止日", "版本与适用范围"],
+    "required": [
+      "标题",
+      "目的",
+      "对象",
+      "分析期间",
+      "数据截止日",
+      "版本与适用范围"
+    ],
     "assertion_title": false
   },
   {
     "id": "contents",
     "name": "目录与阅读导航",
     "question": "如何快速找到结论、行动与证据",
-    "required": ["一级章节", "重要二级章节", "页码或锚点", "管理摘要与行动入口"],
+    "required": [
+      "一级章节",
+      "重要二级章节",
+      "页码或锚点",
+      "管理摘要与行动入口"
+    ],
     "assertion_title": false
   },
   {
@@ -23,7 +35,8 @@
       "关键发现",
       "关键边界"
     ],
-    "assertion_title": true
+    "assertion_title": true,
+    "editorial_check": "标题优先交代对象、变化方向、幅度与比较基准；判断附近保留证据、解释、替代原因、业务含义与边界。定性研究不强行造数。"
   },
   {
     "id": "decision",
@@ -35,7 +48,8 @@
       "风险",
       "状态"
     ],
-    "assertion_title": true
+    "assertion_title": true,
+    "editorial_check": "标题优先交代对象、变化方向、幅度与比较基准；判断附近保留证据、解释、替代原因、业务含义与边界。定性研究不强行造数。"
   },
   {
     "id": "snapshot",
@@ -48,7 +62,8 @@
       "单位",
       "来源"
     ],
-    "assertion_title": true
+    "assertion_title": true,
+    "editorial_check": "标题优先交代对象、变化方向、幅度与比较基准；判断附近保留证据、解释、替代原因、业务含义与边界。定性研究不强行造数。"
   },
   {
     "id": "trend",
@@ -61,7 +76,8 @@
       "解释",
       "来源"
     ],
-    "assertion_title": true
+    "assertion_title": true,
+    "editorial_check": "标题优先交代对象、变化方向、幅度与比较基准；判断附近保留证据、解释、替代原因、业务含义与边界。定性研究不强行造数。"
   },
   {
     "id": "contribution",
@@ -74,7 +90,8 @@
       "计算规则",
       "限制"
     ],
-    "assertion_title": true
+    "assertion_title": true,
+    "editorial_check": "标题优先交代对象、变化方向、幅度与比较基准；判断附近保留证据、解释、替代原因、业务含义与边界。定性研究不强行造数。"
   },
   {
     "id": "comparison",
@@ -87,7 +104,8 @@
       "差异",
       "解释"
     ],
-    "assertion_title": true
+    "assertion_title": true,
+    "editorial_check": "标题优先交代对象、变化方向、幅度与比较基准；判断附近保留证据、解释、替代原因、业务含义与边界。定性研究不强行造数。"
   },
   {
     "id": "theme",
@@ -100,7 +118,8 @@
       "转述标识",
       "解释边界"
     ],
-    "assertion_title": true
+    "assertion_title": true,
+    "editorial_check": "标题优先交代对象、变化方向、幅度与比较基准；判断附近保留证据、解释、替代原因、业务含义与边界。定性研究不强行造数。"
   },
   {
     "id": "funnel",
@@ -113,7 +132,8 @@
       "累计率",
       "验证"
     ],
-    "assertion_title": true
+    "assertion_title": true,
+    "editorial_check": "标题优先交代对象、变化方向、幅度与比较基准；判断附近保留证据、解释、替代原因、业务含义与边界。定性研究不强行造数。"
   },
   {
     "id": "scenario",
@@ -126,7 +146,8 @@
       "结果区间",
       "非预测标识"
     ],
-    "assertion_title": true
+    "assertion_title": true,
+    "editorial_check": "标题优先交代对象、变化方向、幅度与比较基准；判断附近保留证据、解释、替代原因、业务含义与边界。定性研究不强行造数。"
   },
   {
     "id": "action",
@@ -140,7 +161,8 @@
       "指标",
       "门槛"
     ],
-    "assertion_title": true
+    "assertion_title": true,
+    "editorial_check": "标题优先交代对象、变化方向、幅度与比较基准；判断附近保留证据、解释、替代原因、业务含义与边界。定性研究不强行造数。"
   },
   {
     "id": "method",
@@ -166,27 +188,46 @@
       "来源",
       "说明"
     ],
-    "assertion_title": false
+    "assertion_title": false,
+    "slide_use": "长表可置于HTML幻灯附录，并从正文、目录建立跳转；正文保留足够关键证据。"
   },
   {
     "id": "visual_evidence",
     "name": "界面截图与证据",
     "question": "哪个可观察界面状态支持结论",
-    "required": ["截图对象", "采集日期或合成标识", "必要遮盖", "局部标注", "来源与解释"],
-    "assertion_title": true
+    "required": [
+      "截图对象",
+      "采集日期或合成标识",
+      "必要遮盖",
+      "局部标注",
+      "来源与解释"
+    ],
+    "assertion_title": true,
+    "editorial_check": "标题优先交代对象、变化方向、幅度与比较基准；判断附近保留证据、解释、替代原因、业务含义与边界。定性研究不强行造数。"
   },
   {
     "id": "process",
     "name": "流程与依赖",
     "question": "步骤、角色和条件如何衔接",
-    "required": ["起止", "步骤", "条件分支", "角色", "来源或示意标识"],
-    "assertion_title": true
+    "required": [
+      "起止",
+      "步骤",
+      "条件分支",
+      "角色",
+      "来源或示意标识"
+    ],
+    "assertion_title": true,
+    "editorial_check": "标题优先交代对象、变化方向、幅度与比较基准；判断附近保留证据、解释、替代原因、业务含义与边界。定性研究不强行造数。"
   },
   {
     "id": "back_cover",
     "name": "封底",
     "question": "报告版本和适用范围是什么",
-    "required": ["报告名称", "版本", "使用范围"],
+    "required": [
+      "报告名称",
+      "版本",
+      "使用范围"
+    ],
     "assertion_title": false
   }
 ]

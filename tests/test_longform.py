@@ -79,7 +79,9 @@ class LongReportTests(unittest.TestCase):
                 for field in ['sessions','orders']:
                     self.assertEqual(v(p+'_mobile_'+ch+'_'+field)+v(p+'_desktop_'+ch+'_'+field),v(ch+'_'+p+'_'+field))
     def test_plan_not_fixed_to_45(self):
-        self.r['composition']['pages'].remove(next(p for p in self.r['composition']['pages'] if p['kind']=='visual'))
+        page=next(p for p in self.r['composition']['pages'] if p['kind']=='visual')
+        self.r['composition']['pages'].remove(page)
+        self.r['presentation']['slides']=[s for s in self.r['presentation']['slides'] if s.get('visual_page_id')!=page['id']]
         self.assertTrue(validate(self.r)['valid'])
         out=render(self.r);self.assertEqual(out.count('<section class="report-page '),44);self.assertIn('44 / 44',out)
     def test_no_network_or_script(self):

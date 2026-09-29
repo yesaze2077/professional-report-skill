@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "Professional Report IR v3.2",
+  "title": "Professional Report IR v3.3",
   "type": "object",
   "additionalProperties": false,
   "required": [
@@ -60,7 +60,10 @@
           ]
         },
         "format_mode": {
-          "enum": ["brief", "full"]
+          "enum": [
+            "brief",
+            "full"
+          ]
         },
         "audience": {
           "type": "string",
@@ -486,6 +489,68 @@
               "rows"
             ],
             "additionalProperties": false
+          },
+          "evidence_points": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "id",
+                "statement",
+                "metric_ids",
+                "source_ids"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "statement": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "metric_ids": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "uniqueItems": true
+                },
+                "source_ids": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "uniqueItems": true
+                }
+              }
+            }
+          },
+          "reasoning": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "interpretation",
+              "alternatives"
+            ],
+            "properties": {
+              "interpretation": {
+                "type": "string",
+                "minLength": 1
+              },
+              "alternatives": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
           }
         },
         "required": [
@@ -688,7 +753,10 @@
                 "uniqueItems": true
               },
               "visual_kind": {
-                "enum": ["synthetic_ui", "process"]
+                "enum": [
+                  "synthetic_ui",
+                  "process"
+                ]
               },
               "visual_title": {
                 "type": "string",
@@ -706,7 +774,10 @@
                 "type": "array",
                 "minItems": 2,
                 "maxItems": 6,
-                "items": {"type": "string", "minLength": 1}
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                }
               },
               "readouts": {
                 "type": "array",
@@ -715,10 +786,19 @@
                 "items": {
                   "type": "object",
                   "additionalProperties": false,
-                  "required": ["value", "label"],
+                  "required": [
+                    "value",
+                    "label"
+                  ],
                   "properties": {
-                    "value": {"type": "string", "minLength": 1},
-                    "label": {"type": "string", "minLength": 1}
+                    "value": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "label": {
+                      "type": "string",
+                      "minLength": 1
+                    }
                   }
                 }
               },
@@ -776,6 +856,107 @@
               "minLength": 1
             },
             "uniqueItems": true
+          }
+        }
+      }
+    },
+    "presentation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "slides"
+      ],
+      "properties": {
+        "slides": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "id",
+              "kind",
+              "chapter",
+              "title"
+            ],
+            "properties": {
+              "id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "kind": {
+                "enum": [
+                  "cover",
+                  "toc",
+                  "summary",
+                  "analysis",
+                  "visual",
+                  "actions",
+                  "appendix",
+                  "sources",
+                  "back"
+                ]
+              },
+              "chapter": {
+                "type": "string",
+                "minLength": 1
+              },
+              "title": {
+                "type": "string",
+                "minLength": 1
+              },
+              "section_id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "visual_page_id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "action_ids": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "uniqueItems": true
+              },
+              "source_ids": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "uniqueItems": true
+              },
+              "evidence_ids": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "uniqueItems": true
+              },
+              "phase": {
+                "enum": [
+                  "evidence",
+                  "reasoning"
+                ]
+              },
+              "row_start": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 500
+              },
+              "row_end": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 500
+              }
+            }
           }
         }
       }

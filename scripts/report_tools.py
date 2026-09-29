@@ -124,7 +124,7 @@ def safe_locator(s: str) -> bool:
     return not (s.startswith(("/", "\\")) or ".." in Path(s).parts or "\\" in s)
 
 
-def validate(report: dict) -> dict:
+def validate(report: dict, editorial: bool = False) -> dict:
     spec = json.loads((ROOT / "schemas/report.schema.json").read_text(encoding="utf-8"))
     errors = schema_errors(report, spec)
     warnings: list[str] = []
@@ -154,6 +154,29 @@ def validate(report: dict) -> dict:
     for k in report.get("kpis", []): refs([k["metric_id"]], set(metrics), "指标卡")
     for s in report["sections"]:
         refs(s["source_ids"], sources, s["id"])
+        points = s.get("evidence_points", [])
+        point_ids = [point["id"] for point in points]
+        if len(point_ids) != len(set(point_ids)):
+            errors.append(f"{s['id']}：证据点ID重复")
+        for point in points:
+            if not re.fullmatch(r"[A-Za-z][A-Za-z0-9_-]*", point["id"]):
+                errors.append(f"{s['id']}：证据点ID格式错误")
+            refs(point["metric_ids"], set(metrics), s["id"]+"证据点")
+            refs(point["source_ids"], sources, s["id"]+"证据点")
+            for mid in point["metric_ids"]:
+                if mid in metrics and metrics[mid]["source_id"] not in point["source_ids"]:
+                    errors.append(f"{s['id']}：证据点缺少指标{mid}的来源")
+            if not set(point["source_ids"]).issubset(s["source_ids"]):
+                errors.append(f"{s['id']}：证据点来源须包含在分析单元来源中")
+            if not point["metric_ids"] and not point["source_ids"]:
+                errors.append(f"{s['id']}：证据点缺少指标与来源")
+        if editorial:
+            if not points: errors.append(f"{s['id']}：编辑审查缺少证据点")
+            if "reasoning" not in s: errors.append(f"{s['id']}：编辑审查缺少解释和替代原因")
+            if re.search(r"并不代表|不等于|不能说明|无法证明|不一定|不能直接", s["headline"]):
+                errors.append(f"{s['id']}：标题含含糊否定表达；请把边界移至解释")
+            if re.search(r"\d[^，；。]*?(?:%|美元|万元|百分点|万次|万单|万条)", s["headline"]) and not any(x["metric_ids"] for x in points):
+                errors.append(f"{s['id']}：量化标题缺少指标证据引用")
         if s["claim_type"] == "causal": warnings.append(f"{s['id']}：因果判断需要人工复核识别设计，程序无法认证")
         if "table" in s:
             t = s["table"]
@@ -255,6 +278,75 @@ def validate(report: dict) -> dict:
         for label,used,expected in [("分析单元",used_sections,sections),("完整行动",used_actions,action_set),("来源",used_sources,sources)]:
             if set(used)!=expected: errors.append(f"篇章编排遗漏{label}或引用不存在对象")
             if len(used)!=len(set(used)): errors.append(f"篇章编排重复呈现{label}；概览请用交叉引用而非重复全文")
+    if "presentation" in report:
+        slides = report["presentation"]["slides"]
+        slide_ids = [slide["id"] for slide in slides]
+        if len(slide_ids) != len(set(slide_ids)): errors.append("幻灯ID重复")
+        if any(not re.fullmatch(r"[A-Za-z][A-Za-z0-9_-]*", sid) for sid in slide_ids):
+            errors.append("幻灯ID格式错误")
+        kinds = [slide["kind"] for slide in slides]
+        if kinds[:2] != ["cover", "toc"] or kinds[-1:] != ["back"]:
+            errors.append("幻灯须以封面、目录开篇并以封底结束")
+        if not {"summary", "analysis", "actions", "sources", "appendix"}.issubset(kinds):
+            errors.append("完整论证幻灯须包含摘要、分析、行动、来源和附录")
+        analyzed = []
+        appendix = []
+        appendix_rows: dict[str, list[int]] = {}
+        shown_actions = []
+        shown_sources = []
+        visual_ids = {page["id"] for page in report.get("composition", {}).get("pages", []) if page["kind"] == "visual"}
+        for slide in slides:
+            kind = slide["kind"]
+            allowed = {"analysis": {"section_id", "evidence_ids", "phase"}, "appendix": {"section_id", "row_start", "row_end"},
+                       "visual": {"visual_page_id"}, "actions": {"action_ids"},
+                       "sources": {"source_ids"}}.get(kind, set())
+            used = set(slide) - {"id", "kind", "chapter", "title"}
+            if not used <= allowed: errors.append(f"{slide['id']}：幻灯类型不接受{sorted(used-allowed)}")
+            required = {"analysis": "section_id", "appendix": "section_id", "visual": "visual_page_id",
+                        "actions": "action_ids", "sources": "source_ids"}.get(kind)
+            if required and required not in slide: errors.append(f"{slide['id']}：缺少{required}")
+            if kind == "appendix" and ("row_start" not in slide or "row_end" not in slide):
+                errors.append(f"{slide['id']}：附录缺少行范围")
+            if kind == "analysis" and "phase" not in slide: errors.append(f"{slide['id']}：分析幻灯缺少phase")
+            sid = slide.get("section_id")
+            if sid:
+                refs([sid], sections, slide["id"])
+                if kind == "analysis": analyzed.append((sid, slide.get("phase")))
+                if kind == "appendix":
+                    appendix.append(sid)
+                    if "row_start" in slide and "row_end" in slide:
+                        appendix_rows.setdefault(sid, []).extend(range(slide["row_start"], slide["row_end"]))
+                        if slide["row_start"] >= slide["row_end"]:
+                            errors.append(f"{slide['id']}：附录行范围为空")
+            if "evidence_ids" in slide and sid in sections:
+                allowed_points = {x["id"] for x in next(s for s in report["sections"] if s["id"] == sid).get("evidence_points", [])}
+                refs(slide["evidence_ids"], allowed_points, slide["id"]+"证据点")
+            if "visual_page_id" in slide: refs([slide["visual_page_id"]], visual_ids, slide["id"]+"视觉页")
+            if "action_ids" in slide:
+                refs(slide["action_ids"], {a["id"] for a in report["actions"]}, slide["id"])
+                shown_actions.extend(slide["action_ids"])
+            if "source_ids" in slide:
+                refs(slide["source_ids"], sources, slide["id"])
+                shown_sources.extend(slide["source_ids"])
+        required_analysis = {(sid, phase) for sid in sections for phase in ("evidence", "reasoning")}
+        if set(analyzed) != required_analysis or len(analyzed) != len(required_analysis):
+            errors.append("幻灯计划须以证据页和论证页恰好覆盖全部分析单元")
+        tables = {s["id"] for s in report["sections"] if "table" in s}
+        if not tables <= set(appendix): errors.append("幻灯附录遗漏正文详细表格")
+        for section in report["sections"]:
+            sid=section["id"]
+            if "table" in section and sorted(appendix_rows.get(sid, [])) != list(range(len(section["table"]["rows"]))):
+                errors.append(f"{sid}：幻灯附录表格行遗漏或重复")
+        if set(shown_actions) != {a["id"] for a in report["actions"]} or len(shown_actions) != len(set(shown_actions)):
+            errors.append("幻灯行动页须恰好覆盖全部行动")
+        if set(shown_sources) != sources or len(shown_sources) != len(set(shown_sources)):
+            errors.append("幻灯来源页须恰好覆盖全部来源")
+        if editorial:
+            for slide in slides:
+                if re.search(r"并不代表|不等于|不能说明|无法证明|不一定|不能直接", slide["title"]):
+                    errors.append(f"{slide['id']}：幻灯标题含含糊否定表达")
+    elif editorial and report["meta"].get("format_mode") == "full":
+        warnings.append("未提供幻灯计划；只审查A4报告")
     domains=[c["domain"] for c in report.get("coverage",[])]
     if len(domains)!=len(set(domains)): errors.append("覆盖台账模块重复")
     for cov in report.get("coverage",[]):
@@ -409,9 +501,14 @@ def chart_svg(c: dict, report: dict, cid: str, dense: bool = False) -> str:
     return f'<figure><figcaption><b>{E(c["title"])}</b><span>{E(c["period"])} · 单位：{E(c["unit"])}</span></figcaption><div class="chart-scroll" tabindex="0">{"".join(pieces)}</div><details class="chart-data"><summary>查看图表数据</summary>{detail}</details></figure>'
 
 
-def render(report: dict) -> str:
+def render(report: dict, layout: str = "report") -> str:
     result=validate(report)
     if not result["valid"]:raise ValueError("数据校验失败："+"；".join(result["errors"]))
+    if layout == "slides":
+        if "presentation" not in report: raise ValueError("幻灯渲染需要显式presentation.slides计划")
+        from slides import render_slides
+        return render_slides(report)
+    if layout != "report": raise ValueError("未知版式")
     if "composition" in report:
         from longform import render_composed
         return render_composed(report)
@@ -458,15 +555,15 @@ def write_new(path: Path, content: str, force: bool = False) -> None:
 def main() -> int:
     p=argparse.ArgumentParser(description="中文报告数据校验及离线HTML渲染")
     sub=p.add_subparsers(dest='command',required=True)
-    v=sub.add_parser('validate');v.add_argument('input',type=Path)
-    r=sub.add_parser('render');r.add_argument('input',type=Path);r.add_argument('--output',required=True,type=Path);r.add_argument('--force',action='store_true')
+    v=sub.add_parser('validate');v.add_argument('input',type=Path);v.add_argument('--editorial',action='store_true')
+    r=sub.add_parser('render');r.add_argument('input',type=Path);r.add_argument('--output',required=True,type=Path);r.add_argument('--force',action='store_true');r.add_argument('--layout',choices=['report','slides'],default='report')
     args=p.parse_args()
     try:
-        data=read_json(args.input);result=validate(data)
+        data=read_json(args.input);result=validate(data,getattr(args,'editorial',False))
         if not result['valid']:
             print(json.dumps(result,ensure_ascii=False,indent=2));return 2
         if args.command=='render':
-            write_new(args.output,render(data),args.force);result['output']=str(args.output)
+            write_new(args.output,render(data,args.layout),args.force);result['output']=str(args.output)
         print(json.dumps(result,ensure_ascii=False,indent=2));return 0
     except (OSError,ValueError,TypeError,KeyError) as e:
         print(f'失败：{e}',file=sys.stderr);return 2

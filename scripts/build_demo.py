@@ -48,7 +48,7 @@ def make_demo() -> dict:
         calc(mid+'_orders',250000*d,'单','S4','multiply',['total_q2_sessions',mid+'_cvr_lift'],status='estimated')
         calc(mid+'_sales',250000*d*200,'美元','S4','multiply',[mid+'_orders','scenario_aov'],status='estimated')
     report={
-      'meta':dict(title='收入增长20%，转化率降至2.88%',edition='中文专业报告简报示例 · v3.2',period='2026年第二季度（对比第一季度）',data_as_of='2026年7月7日',main_question='增长来自哪里，下一阶段应优先验证什么？',scope='虚构零售业务｜统一口径净销售额、会话与反馈样本',language='zh-CN',synthetic=True,status='final',depth='brief',format_mode='brief'),
+      'meta':dict(title='收入增长20%，转化率降至2.88%',edition='中文专业报告简报示例 · v3.3.0',period='2026年第二季度（对比第一季度）',data_as_of='2026年7月7日',main_question='增长来自哪里，下一阶段应优先验证什么？',scope='虚构零售业务｜统一口径净销售额、会话与反馈样本',language='zh-CN',synthetic=True,status='final',depth='brief',format_mode='brief'),
       'sources':[
         dict(id='S1',title='合成渠道净销售额',period='2026年第一、第二季度',locator='demo-report.json → metrics / sales_*、paid_*等',note='各渠道为互斥示例分类；净销售额不含税费、运费，已扣折扣及退款。目标150万美元也是合成示例。渠道归属用于算术分解，不等于因果增量。'),
         dict(id='S2',title='合成设备会话与订单',period='2026年第一、第二季度',locator='demo-report.json → metrics / mobile_*、desktop_*、total_*',note='订单数／会话数为本例转化率定义；合计先加总分子与分母再相除。假设订单归属与会话统计使用相同期间，未提供价格、库存、页面速度或实验数据。'),

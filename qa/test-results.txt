@@ -30,6 +30,8 @@ test_real_report_provenance_not_declared_synthetic (test_longform.LongReportTest
 test_summary_unique (test_longform.LongReportTests) ... ok
 test_visual_source_ref (test_longform.LongReportTests) ... ok
 test_wrong_payload_for_kind (test_longform.LongReportTests) ... ok
+test_png_text_chunk (test_privacy_scan.PrivacyScanTests) ... ok
+test_zip_member (test_privacy_scan.PrivacyScanTests) ... ok
 test_action_reference (test_report.ReportTests) ... ok
 test_all_missing_chart (test_report.ReportTests) ... ok
 test_bool_not_number (test_report.ReportTests) ... ok
@@ -86,8 +88,15 @@ test_wrong_arithmetic (test_report.ReportTests) ... ok
 test_zero_bar_render (test_report.ReportTests) ... ok
 test_zero_baseline (test_report.ReportTests) ... ok
 test_zero_denominator (test_report.ReportTests) ... ok
+test_editorial_and_legacy_compatibility (test_slides.SlideTests) ... ok
+test_evidence_references_checked (test_slides.SlideTests) ... ok
+test_evidence_source_must_cover_metric (test_slides.SlideTests) ... ok
+test_html_escapes_untrusted_content (test_slides.SlideTests) ... ok
+test_navigation_anchors_and_offline (test_slides.SlideTests) ... ok
+test_slide_plan_references_and_coverage (test_slides.SlideTests) ... ok
+test_vague_headline_rejected_only_in_editorial_mode (test_slides.SlideTests) ... ok
 
 ----------------------------------------------------------------------
-Ran 88 tests in 0.912s
+Ran 97 tests in 0.947s
 
 OK

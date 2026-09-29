@@ -5,7 +5,8 @@
     "intent": "排名／长中文类目比较",
     "required": "零基线；完整标签；单位",
     "avoid": "把非互斥占比当构成",
-    "renderer": "implemented"
+    "renderer": "implemented",
+    "dual_layout_note": "可作为A4或HTML幻灯的主要视觉证据；幻灯需保留关键数字、来源、解释与边界，过密则拆页。"
   },
   {
     "id": "dumbbell",
@@ -13,7 +14,8 @@
     "intent": "两个时期或对象的差异",
     "required": "同尺度；两个时期；差值",
     "avoid": "多个不可比群体混成前后变化",
-    "renderer": "implemented"
+    "renderer": "implemented",
+    "dual_layout_note": "可作为A4或HTML幻灯的主要视觉证据；幻灯需保留关键数字、来源、解释与边界，过密则拆页。"
   },
   {
     "id": "waterfall",
@@ -21,7 +23,8 @@
     "intent": "期初至期末的加总变化",
     "required": "起点终点；带符号分项；勾稽",
     "avoid": "乘法影响不处理交互项；重叠归因",
-    "renderer": "implemented"
+    "renderer": "implemented",
+    "dual_layout_note": "可作为A4或HTML幻灯的主要视觉证据；幻灯需保留关键数字、来源、解释与边界，过密则拆页。"
   },
   {
     "id": "line",
@@ -29,7 +32,8 @@
     "intent": "连续时间趋势",
     "required": "有序时间；缺失断开；单位",
     "avoid": "只有两个值强画长期趋势；伪造平滑",
-    "renderer": "implemented"
+    "renderer": "implemented",
+    "dual_layout_note": "可作为A4或HTML幻灯的主要视觉证据；幻灯需保留关键数字、来源、解释与边界，过密则拆页。"
   },
   {
     "id": "stacked_bar",
@@ -37,7 +41,8 @@
     "intent": "构成及结构变化",
     "required": "互斥类别；总量；排序",
     "avoid": "多选题或净增量份额",
-    "renderer": "guidance_only"
+    "renderer": "guidance_only",
+    "dual_layout_note": "适用时由合适工具制作；当前参考渲染器不因目录列出此图型而自动实现。"
   },
   {
     "id": "histogram",
@@ -45,7 +50,8 @@
     "intent": "数据分布",
     "required": "分箱；样本量；单位",
     "avoid": "无原始数据凭平均数制造分布",
-    "renderer": "guidance_only"
+    "renderer": "guidance_only",
+    "dual_layout_note": "适用时由合适工具制作；当前参考渲染器不因目录列出此图型而自动实现。"
   },
   {
     "id": "scatter",
@@ -53,7 +59,8 @@
     "intent": "变量关系",
     "required": "双轴单位；观察对象；样本",
     "avoid": "相关关系当因果",
-    "renderer": "guidance_only"
+    "renderer": "guidance_only",
+    "dual_layout_note": "适用时由合适工具制作；当前参考渲染器不因目录列出此图型而自动实现。"
   },
   {
     "id": "cohort",
@@ -61,7 +68,8 @@
     "intent": "同批对象留存",
     "required": "首期定义；基数；成熟窗口",
     "avoid": "未知单元格补0",
-    "renderer": "guidance_only"
+    "renderer": "guidance_only",
+    "dual_layout_note": "适用时由合适工具制作；当前参考渲染器不因目录列出此图型而自动实现。"
   },
   {
     "id": "funnel",
@@ -69,7 +77,8 @@
     "intent": "流程损失",
     "required": "去重对象；顺序；分步／累计分母",
     "avoid": "不同人群或时窗拼接",
-    "renderer": "guidance_only"
+    "renderer": "guidance_only",
+    "dual_layout_note": "适用时由合适工具制作；当前参考渲染器不因目录列出此图型而自动实现。"
   },
   {
     "id": "range",
@@ -77,7 +86,8 @@
     "intent": "估计或情景范围",
     "required": "区间类型；计算方法；单位",
     "avoid": "用情景范围冒充置信区间",
-    "renderer": "guidance_only"
+    "renderer": "guidance_only",
+    "dual_layout_note": "适用时由合适工具制作；当前参考渲染器不因目录列出此图型而自动实现。"
   },
   {
     "id": "table",
@@ -85,7 +95,8 @@
     "intent": "精确查数与多字段",
     "required": "单位进表头；数字右对齐；注释",
     "avoid": "大段论证全部表格化",
-    "renderer": "implemented"
+    "renderer": "implemented",
+    "dual_layout_note": "A4正文只保留论证所需列；HTML幻灯明细表放可跳转附录，正文仍保留关键值。"
   },
   {
     "id": "milestone",
@@ -93,7 +104,8 @@
     "intent": "执行顺序和依赖",
     "required": "建议／批准状态；责任；依赖",
     "avoid": "把建议时间冒充承诺",
-    "renderer": "guidance_only"
+    "renderer": "guidance_only",
+    "dual_layout_note": "适用时由合适工具制作；当前参考渲染器不因目录列出此图型而自动实现。"
   },
   {
     "id": "screenshot",
@@ -101,7 +113,8 @@
     "intent": "证明特定时间的界面状态或文案",
     "required": "使用权；采集日期；对象；必要脱敏；裁剪或标注说明",
     "avoid": "合成界面冒充真实证据；遮盖后仍可识别个人；过度裁剪改变语境",
-    "renderer": "guidance_only"
+    "renderer": "guidance_only",
+    "dual_layout_note": "两版均须获准并脱敏，标明采集时间；合成界面仅作示意。"
   },
   {
     "id": "flowchart",
@@ -109,6 +122,7 @@
     "intent": "呈现步骤、角色、条件与依赖",
     "required": "起止；箭头方向；分支条件；图例；来源或示意标识",
     "avoid": "无来源的转化比例；交叉线过多；省略失败路径",
-    "renderer": "guidance_only"
+    "renderer": "guidance_only",
+    "dual_layout_note": "适用时由合适工具制作；当前参考渲染器不因目录列出此图型而自动实现。"
   }
 ]
